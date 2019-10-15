@@ -38,12 +38,12 @@ resource "aws_lb" "this" {
   load_balancer_type = "network"
   internal = false
 
-  subnets = var.public_subnets
+//  subnets = var.public_subnets
 
-//  subnet_mapping {
-//    subnet_id     = var.public_subnets
-//    allocation_id = aws_eip.this.id
-//  }
+  subnet_mapping {
+    subnet_id     = var.public_subnets[0]
+    allocation_id = aws_eip.this.id
+  }
 
   enable_cross_zone_load_balancing = true
 }
